@@ -52,8 +52,14 @@ void Canvas::setColor(float r, float g, float b)
     glColor3f(r, g, b);
 }
 
+void Canvas::setColorfv(float c[])
+{
+    glColor3fv(c);
+}
+
 void Canvas::lineTo(Point2 p) {
-    glBegin(GL_LINES);
+    glBegin(GL_QUADS);
+
     glVertex2f((GLfloat)CP.getX(), (GLfloat)CP.getY());
     glVertex2f((GLfloat)p.getX(), (GLfloat)p.getY());
     glEnd();
@@ -68,13 +74,14 @@ Canvas::Canvas(int width, int height, char* windowTitle) {
     int argc = 1;
 
     glutInit(&argc, argv);
-    //glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
-    //glutInitWindowSize(width, height);
-    //glutInitWindowPosition(20, 20);
-    //glutCreateWindow(windowTitle);
-    //setWindow(0, (float)width, 0, (float)height); // default world window
-    //setViewport(0, width, 0, height); //default viewport
-    //CP.set(0.0f, 0.0f); //initialize the CP to (0,0)
+    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
+    glutInitWindowSize(width, height);
+    glutInitWindowPosition(20, 20);
+    glutCreateWindow(windowTitle);
+    setWindow(0, (float)width, 0, (float)height); // default world window
+    setViewport(0, width, 0, height); //default viewport
+    CP.set(0.0f, 0.0f); //initialize the CP to (0,0)
+     
 }
 
 void Canvas::moveTo(Point2 p)  //moves current point CP to point p object
