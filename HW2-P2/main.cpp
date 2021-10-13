@@ -5,7 +5,7 @@
 #include "classes.h"
 
 using namespace std;
-char title[] = "yingyang";
+char title[] = "YingYang";
 Canvas cvs(480, 480, title);
 
 
