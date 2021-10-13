@@ -52,6 +52,11 @@ void Canvas::setColor(float r, float g, float b)
     glColor3f(r, g, b);
 }
 
+void Canvas::setColorfv(float c[])
+{
+    glColor3fv(c);
+}
+
 void Canvas::lineTo(Point2 p) {
     glBegin(GL_QUADS);
 

@@ -2,9 +2,6 @@
 //Kimberly Modeste
 #include <GL/glut.h>
 #include <math.h>
-#include <time.h> 
-#include <vector>
-#include <iostream>
 #include "classes.h"
 
 using namespace std;
@@ -34,19 +31,28 @@ void display() {
 	Point2 c;
 	float theta;
 	float r;
-	
+	float black[] = { 0.0, 0.0, 0.0 }, white[] = { 1.0,1.0,1.0 };
 	cvs.clearScreen();
-	cvs.setBackgroundColor(1.0, 1.0, 1.0);
+	cvs.setBackgroundColor(0.61, 0.82, 0.86);
 	cvs.setColor(0.0, 0.0, 0.0);
 	cvs.setWindow(-10.0, 10.0, -10.0, 10.0);
 	cvs.setViewport(10, 460, 10, 460);
 	
+
 	//colors half of the top
 	c.set(0, 0);
 	r = 10;
-	cvs.setColor(0.0, 0.0, 0.0);
+	cvs.setColorfv(black);
 	glBegin(GL_POLYGON);
 	for (int i = 0; i < 180; i++)
+	{
+		theta = i * 3.14159265 / 180;
+		glVertex2f(r * cos(theta) + c.getX(), r * sin(theta) + c.getY());
+	}
+	glEnd();
+	cvs.setColorfv(white);
+	glBegin(GL_POLYGON);
+	for (int i = 180; i < 360; i++)
 	{
 		theta = i * 3.14159265 / 180;
 		glVertex2f(r * cos(theta) + c.getX(), r * sin(theta) + c.getY());
@@ -56,6 +62,7 @@ void display() {
 	//Colors the two arc circles
 	c.set(-5, 0);
 	r = 5;
+	cvs.setColorfv(black);
 	glBegin(GL_POLYGON);
 	for (int i = 0; i < 360; i++)
 	{
@@ -64,7 +71,7 @@ void display() {
 	}
 	glEnd();
 	c.set(5, 0);
-	cvs.setColor(1.0, 1.0, 1.0);
+	cvs.setColorfv(white);
 	glBegin(GL_POLYGON);
 	for (int i = 0; i < 360; i++)
 	{
@@ -77,7 +84,7 @@ void display() {
 	//little black circle
 	r = 2;
 	c.set(-5, 0);
-	cvs.setColor(1.0, 1.0, 1.0);
+	cvs.setColorfv(white);
 	glBegin(GL_POLYGON);
 	for (int i = 0; i < 360; i++)
 	{
@@ -87,7 +94,7 @@ void display() {
 	glEnd();
 	//little white circle
 	c.set(5, 0);
-	cvs.setColor(0.0, 0.0, 0.0);
+	cvs.setColorfv(black);
 	glBegin(GL_POLYGON);
 	for (int i = 0; i < 360; i++) 
 	{
