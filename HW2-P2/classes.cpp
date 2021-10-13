@@ -53,7 +53,8 @@ void Canvas::setColor(float r, float g, float b)
 }
 
 void Canvas::lineTo(Point2 p) {
-    glBegin(GL_LINES);
+    glBegin(GL_QUADS);
+
     glVertex2f((GLfloat)CP.getX(), (GLfloat)CP.getY());
     glVertex2f((GLfloat)p.getX(), (GLfloat)p.getY());
     glEnd();
