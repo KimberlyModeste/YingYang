@@ -1,4 +1,4 @@
-//CSC470 HW1
+//CSC470 HW2
 //Kimberly Modeste
 #include <GL/glut.h>
 #include <math.h>
